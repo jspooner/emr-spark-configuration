@@ -1,0 +1,36 @@
+[
+  {
+    "Classification": "spark-defaults",
+    "Properties": {
+      "spark.scheduler.mode": "FAIR",
+      "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+      "spark.sql.autoBroadcastJoinThreshold": "300000000"
+    }
+  },
+  {
+    "Classification": "spark-log4j",
+    "Properties": {
+      "log4j.category.org.elasticsearch.spark": "TRACE"
+    }
+  },
+  {
+    "Classification": "spark",
+    "Properties": {
+      "maximizeResourceAllocation": "true"
+    }
+  },
+  {
+    "Classification": "zeppelin-env",
+    "Configurations": [
+      {
+        "Classification": "export",
+        "Properties": {
+          "ZEPPELIN_NOTEBOOK_STORAGE":"org.apache.zeppelin.notebook.repo.S3NotebookRepo",
+          "ZEPPELIN_NOTEBOOK_S3_BUCKET": "MY_BUCKET_NAME_REPLACE_ME",
+          "ZEPPELIN_NOTEBOOK_USER":"hadoop",
+          "SPARK_SUBMIT_OPTIONS" : "\"$SPARK_SUBMIT_OPTIONS --packages org.elasticsearch:elasticsearch-spark-20_2.11:5.1.1"
+        }
+      }
+    ]
+  }
+]
